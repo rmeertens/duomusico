@@ -1,0 +1,10 @@
+version: '3'
+services:
+  frontend:
+    build: duomusico-frontend
+    ports:
+     - "80:80"
+  backend:
+    build: Duolingo-e-mersion-server
+    ports: 
+     - "8002:8002"

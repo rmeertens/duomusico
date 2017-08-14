@@ -1,0 +1,6 @@
+[submodule "Duolingo-e-mersion-server"]
+	path = Duolingo-e-mersion-server
+	url = git@github.com:rmeertens/Duolingo-e-mersion-server.git
+[submodule "duomusico-frontend"]
+	path = duomusico-frontend
+	url = git@github.com:rmeertens/duomusico-frontend.git
