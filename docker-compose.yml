@@ -4,7 +4,13 @@ services:
     build: duomusico-frontend
     ports:
      - "80:80"
-  backend:
-    build: Duolingo-e-mersion-server
+#  backend:
+#    build: Duolingo-e-mersion-server
+#    ports: 
+#     - "8002:8002"
+  pythonbackend: 
+    build: duomusico-python
     ports: 
-     - "8002:8002"
+     - "1235:1235"
+    volumes:
+      - ./duomusico-python:/myapp
