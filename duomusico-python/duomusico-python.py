@@ -1,4 +1,6 @@
 from flask import Flask
+import logging
+
 
 app = Flask(__name__)
 
@@ -28,10 +30,16 @@ print(FILENAME_INFORMATION )
 print(FILENAME_SPARSE_MATRIX)
 apikey_musixmatch = '5d43102db4198580090bcf0070bb7c79'
 
+
+logging.basicConfig(filename='duomusicolog.log', level=logging.INFO)
+logging.info('Started!')
+
 ### READ THE MILLION SONG IDS AND ARTIST NAMES AND TITLES
 artist_names = dict()
 titles = dict()
+
 print("Loading matches")
+logging.info('Loading matches')
 
 with open(FILENAME_MXM_MATCHES) as infile:
     for _ in range(18):
@@ -55,6 +63,7 @@ mxm_track_id_vector = list()
 
 
 print("Loading dataset_train")
+logging.info('Loading dataset_train')
 
 if os.path.exists(FILENAME_SPARSE_MATRIX):
     print("Loading from pickle")
@@ -154,6 +163,8 @@ def after_request(response):
 
 @app.route('/recommend/<username>')
 def show_user_profile(username):
+    logging.info('Loading matches for user: ' + username)
+    
     lingo = duolingo.Duolingo(username)
     user_learning_language = list(lingo.user_data.language_data.keys())[0]
     known_words = list()
