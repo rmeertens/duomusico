@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import request
 import logging
 
 
@@ -163,8 +164,8 @@ def after_request(response):
 
 @app.route('/recommend/<username>')
 def show_user_profile(username):
-    logging.info('Loading matches for user: ' + username)
-    
+    logging.info('Loading matches for user: ' + username + " from: " + request.remote_addr)
+
     lingo = duolingo.Duolingo(username)
     user_learning_language = list(lingo.user_data.language_data.keys())[0]
     known_words = list()
